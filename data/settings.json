@@ -1,0 +1,9 @@
+{
+  "siteName": "Nexora",
+  "tagline": "Alquiler de bicicletas para una ciudad que respira",
+  "contactEmail": "hola@nexora.bike",
+  "phone": "+34 600 000 000",
+  "address": "Madrid, España",
+  "co2PerHour": 0.9,
+  "treeKgYear": 21
+}

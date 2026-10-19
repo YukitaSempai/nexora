@@ -1,0 +1,68 @@
+[
+  {
+    "id": "US-001",
+    "name": "Admin Demo",
+    "email": "admin@nexora.bike",
+    "phone": "+34 600 000 001",
+    "role": "admin",
+    "status": "activo",
+    "password": "demo1234",
+    "rentals": 0,
+    "joined": "2026-01-10"
+  },
+  {
+    "id": "US-002",
+    "name": "Editor Demo",
+    "email": "editor@nexora.bike",
+    "phone": "+34 600 000 002",
+    "role": "editor",
+    "status": "activo",
+    "password": "demo1234",
+    "rentals": 0,
+    "joined": "2026-02-01"
+  },
+  {
+    "id": "US-003",
+    "name": "Laura Gómez",
+    "email": "laura@ejemplo.com",
+    "phone": "+34 611 111 111",
+    "role": "cliente",
+    "status": "activo",
+    "password": null,
+    "rentals": 4,
+    "joined": "2026-03-05"
+  },
+  {
+    "id": "US-004",
+    "name": "Carlos Ruiz",
+    "email": "carlos@ejemplo.com",
+    "phone": "+34 622 222 222",
+    "role": "cliente",
+    "status": "activo",
+    "password": null,
+    "rentals": 2,
+    "joined": "2026-05-12"
+  },
+  {
+    "id": "US-005",
+    "name": "Marta López",
+    "email": "marta@ejemplo.com",
+    "phone": "+34 633 333 333",
+    "role": "cliente",
+    "status": "activo",
+    "password": null,
+    "rentals": 6,
+    "joined": "2026-06-20"
+  },
+  {
+    "id": "US-006",
+    "name": "Diego Torres",
+    "email": "diego@ejemplo.com",
+    "phone": "+34 644 444 444",
+    "role": "cliente",
+    "status": "inactivo",
+    "password": null,
+    "rentals": 1,
+    "joined": "2026-07-30"
+  }
+]

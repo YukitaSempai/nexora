@@ -1,0 +1,86 @@
+[
+  {
+    "id": "RS-001",
+    "bikeId": "BK-004",
+    "customer": "Laura Gómez",
+    "email": "laura@ejemplo.com",
+    "date": "2026-10-18",
+    "hours": 4,
+    "station": "Estación Río",
+    "status": "activa",
+    "total": 10,
+    "createdAt": "2026-10-18T09:15:00"
+  },
+  {
+    "id": "RS-002",
+    "bikeId": "BK-001",
+    "customer": "Carlos Ruiz",
+    "email": "carlos@ejemplo.com",
+    "date": "2026-10-19",
+    "hours": 2,
+    "station": "Estación Centro",
+    "status": "confirmada",
+    "total": 3,
+    "createdAt": "2026-10-17T18:40:00"
+  },
+  {
+    "id": "RS-003",
+    "bikeId": "BK-003",
+    "customer": "Marta López",
+    "email": "marta@ejemplo.com",
+    "date": "2026-10-20",
+    "hours": 6,
+    "station": "Estación Centro",
+    "status": "pendiente",
+    "total": 15,
+    "createdAt": "2026-10-19T11:05:00"
+  },
+  {
+    "id": "RS-004",
+    "bikeId": "BK-005",
+    "customer": "Diego Torres",
+    "email": "diego@ejemplo.com",
+    "date": "2026-10-16",
+    "hours": 8,
+    "station": "Estación Sierra",
+    "status": "finalizada",
+    "total": 16,
+    "createdAt": "2026-10-15T08:30:00"
+  },
+  {
+    "id": "RS-005",
+    "bikeId": "BK-002",
+    "customer": "Ana Martín",
+    "email": "ana@ejemplo.com",
+    "date": "2026-10-15",
+    "hours": 3,
+    "station": "Estación Norte",
+    "status": "finalizada",
+    "total": 4.5,
+    "createdAt": "2026-10-14T16:20:00"
+  },
+  {
+    "id": "RS-006",
+    "bikeId": "BK-007",
+    "customer": "Pablo Sánchez",
+    "email": "pablo@ejemplo.com",
+    "date": "2026-10-17",
+    "hours": 5,
+    "station": "Estación Sur",
+    "status": "cancelada",
+    "total": 7.5,
+    "createdAt": "2026-10-16T12:00:00"
+  },
+  {
+    "id": "RS-007",
+    "bikeId": "BK-008",
+    "customer": "Lucía Vega",
+    "email": "lucia@ejemplo.com",
+    "date": "2026-10-22",
+    "hours": 12,
+    "station": "Estación Este",
+    "status": "pendiente",
+    "total": 30,
+    "createdAt": "2026-10-19T10:10:00"
+  }
+]

@@ -1,0 +1,655 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Nexora - Alquiler de bicicletas urbanas por horas, días o semanas. Reserva online, estaciones por la ciudad y movilidad sostenible."
+    />
+    <meta name="theme-color" content="#16a34a" />
+    <title>Nexora | Alquiler de bicicletas para una ciudad que respira</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <!-- ===== SKIP LINK (accesibilidad) ===== -->
+    <a href="#main" class="skip-link">Saltar al contenido principal</a>
+
+    <!-- ===== HEADER / NAV ===== -->
+    <header class="site-header" id="header">
+      <div class="container header-inner">
+        <a href="index.html" class="logo" aria-label="Nexora inicio">
+          <span class="logo-mark" aria-hidden="true">N</span>
+          <span class="logo-text">Nex<span>ora</span></span>
+        </a>
+
+        <nav class="main-nav" aria-label="Navegación principal">
+          <button
+            class="nav-toggle"
+            aria-expanded="false"
+            aria-controls="nav-menu"
+            aria-label="Abrir menú"
+          >
+            <span></span><span></span><span></span>
+          </button>
+          <ul id="nav-menu" class="nav-menu">
+            <li><a href="#inicio" class="active">Inicio</a></li>
+            <li><a href="#servicios">Cómo funciona</a></li>
+            <li><a href="#flota">Flota</a></li>
+            <li><a href="#impacto">Impacto</a></li>
+            <li><a href="#nosotros">Nosotros</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+            <li><a href="admin.html" class="btn-nav-admin">Panel Admin</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <!-- ===== HERO ===== -->
+      <section class="hero" id="inicio">
+        <div class="container hero-grid">
+          <div class="hero-content">
+            <span class="badge-hero">🌱 Reserva online en menos de 1 minuto</span>
+            <h1>
+              Alquila tu bici
+              <span class="gradient-text">y ponte en marcha</span> en
+              cualquier punto de la ciudad
+            </h1>
+            <p class="lead">
+              Nexora es tu plataforma de alquiler de bicicletas urbanas:
+              reserva por horas, días o semanas, recoge en nuestra red de
+              estaciones y pedalea sin huella de carbono.
+            </p>
+            <div class="hero-actions">
+              <button type="button" class="btn btn-primary js-open-reserve">
+                Reservar una bici
+              </button>
+              <a href="#flota" class="btn btn-ghost">Ver flota →</a>
+            </div>
+            <ul class="hero-stats">
+              <li>
+                <strong id="statAvailable">—</strong>
+                <span>Bicis disponibles</span>
+              </li>
+              <li>
+                <strong id="statStations">—</strong>
+                <span>Estaciones</span>
+              </li>
+              <li><strong>24/7</strong><span>Reservas online</span></li>
+            </ul>
+          </div>
+
+          <div class="hero-visual">
+            <div class="hero-art">
+              <svg
+                viewBox="0 0 560 400"
+                role="img"
+                aria-label="Ilustración: una persona pedaleando por una ciclovía entre naturaleza y colinas"
+              >
+                <defs>
+                  <linearGradient id="skyG" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0" stop-color="#e8f8ee" />
+                    <stop offset="1" stop-color="#fdf6e3" />
+                  </linearGradient>
+                  <linearGradient id="hillG" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0" stop-color="#86efac" />
+                    <stop offset="1" stop-color="#4ade80" />
+                  </linearGradient>
+                </defs>
+
+                <rect width="560" height="400" fill="url(#skyG)" />
+
+                <!-- sol -->
+                <circle cx="462" cy="78" r="56" fill="#fde68a" opacity="0.35" />
+                <circle cx="462" cy="78" r="38" fill="#fde68a" />
+
+                <!-- nubes -->
+                <g fill="#ffffff" opacity="0.9">
+                  <ellipse cx="118" cy="68" rx="46" ry="17" />
+                  <ellipse cx="150" cy="56" rx="28" ry="15" />
+                  <ellipse cx="312" cy="44" rx="34" ry="13" />
+                </g>
+
+                <!-- colinas -->
+                <path
+                  d="M0 248 Q120 168 260 232 T560 206 V400 H0 Z"
+                  fill="#bbf7d0"
+                />
+                <path
+                  d="M0 300 Q160 232 330 292 T560 268 V400 H0 Z"
+                  fill="url(#hillG)"
+                />
+
+                <!-- árboles -->
+                <g fill="#15803d">
+                  <path d="M70 300 l16 -34 16 34 z" />
+                  <path d="M70 312 l16 -28 16 28 z" />
+                  <rect x="83" y="310" width="6" height="14" fill="#7c4a12" />
+                  <path d="M486 284 l14 -30 14 30 z" />
+                  <path d="M486 296 l14 -26 14 26 z" />
+                  <rect x="497" y="294" width="5" height="12" fill="#7c4a12" />
+                </g>
+
+                <!-- camino / ciclovía -->
+                <rect x="0" y="350" width="560" height="50" fill="#dfe8e0" />
+                <rect x="0" y="350" width="560" height="4" fill="#c3d2c5" />
+                <g stroke="#ffffff" stroke-width="4" stroke-dasharray="22 16">
+                  <line x1="0" y1="378" x2="560" y2="378" />
+                </g>
+
+                <!-- líneas de movimiento -->
+                <g stroke="#4ade80" stroke-width="5" stroke-linecap="round" opacity="0.7">
+                  <line x1="120" y1="308" x2="176" y2="308" />
+                  <line x1="104" y1="330" x2="158" y2="330" />
+                  <line x1="128" y1="350" x2="170" y2="350" />
+                </g>
+
+                <!-- bicicleta -->
+                <g
+                  stroke="#14532d"
+                  stroke-width="5"
+                  fill="none"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <circle cx="215" cy="342" r="27" />
+                  <circle cx="315" cy="342" r="27" />
+                  <path d="M215 342 L245 300 L265 342 L215 342" />
+                  <path d="M245 300 L290 300 L265 342" />
+                  <path d="M290 300 L315 342" />
+                  <path d="M245 300 L240 292 M233 290 h16" />
+                  <path d="M290 300 L294 288 M287 285 h16" />
+                </g>
+                <circle cx="265" cy="342" r="5" fill="#14532d" />
+
+                <!-- ciclista -->
+                <g
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  fill="none"
+                >
+                  <path
+                    d="M251 297 L256 271"
+                    stroke="#16a34a"
+                    stroke-width="11"
+                  />
+                  <path d="M255 274 L292 292" stroke="#16a34a" stroke-width="7" />
+                  <path
+                    d="M251 297 L263 320 L266 338"
+                    stroke="#0f2e1d"
+                    stroke-width="8"
+                  />
+                  <path
+                    d="M251 297 L243 322 L257 336"
+                    stroke="#14532d"
+                    stroke-width="8"
+                  />
+                </g>
+                <circle cx="257" cy="258" r="12" fill="#0f2e1d" />
+                <path
+                  d="M246 254 a12 12 0 0 1 22 -6"
+                  fill="none"
+                  stroke="#f59e0b"
+                  stroke-width="5"
+                  stroke-linecap="round"
+                />
+
+                <!-- flores -->
+                <g fill="#f472b6">
+                  <circle cx="40" cy="336" r="5" />
+                  <circle cx="52" cy="342" r="4" fill="#fbbf24" />
+                  <circle cx="524" cy="330" r="5" />
+                  <circle cx="512" cy="340" r="4" fill="#a78bfa" />
+                </g>
+              </svg>
+            </div>
+            <div class="float-chip chip-co2">
+              🌿 CO₂ evitado: <strong id="chipCo2">—</strong>
+            </div>
+            <div class="float-chip chip-rating">
+              🚲 <strong id="chipAvailable">—</strong> bicis listas ahora
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== CÓMO FUNCIONA + TARIFAS ===== -->
+      <section class="section" id="servicios">
+        <div class="container">
+          <header class="section-head">
+            <span class="eyebrow">Cómo funciona</span>
+            <h2>Alquilar una bici en 3 pasos</h2>
+            <p class="section-sub">
+              Sin apps complicadas ni depósitos: eliges, reservas y pedaleas.
+            </p>
+          </header>
+
+          <div class="steps">
+            <article class="step reveal">
+              <div class="step-num">1</div>
+              <h3>Elige tu bici y tarifa</h3>
+              <p>
+                Urbana, eléctrica o de montaña, por horas, días o semana. Toda
+                la flota con disponibilidad en vivo.
+              </p>
+            </article>
+            <article class="step reveal">
+              <div class="step-num">2</div>
+              <h3>Reserva en un minuto</h3>
+              <p>
+                Indica fecha y duración. Recibes confirmación inmediata y
+                cancelación gratuita hasta 1 hora antes.
+              </p>
+            </article>
+            <article class="step reveal">
+              <div class="step-num">3</div>
+              <h3>Recoge y pedalea</h3>
+              <p>
+                Pasa por la estación indicada, toma tu casco incluido y
+                devuélvela en cualquier punto de la red.
+              </p>
+            </article>
+          </div>
+
+          <header class="sub-head">
+            <span class="eyebrow">Tarifas</span>
+            <h2>Precios claros, sin sorpresas</h2>
+            <p>
+              Tarifas de referencia de esta demostración. El total se calcula
+              automáticamente al reservar.
+            </p>
+          </header>
+
+          <div class="pricing">
+            <article class="price-card reveal">
+              <h3>Por horas</h3>
+              <div class="price-amount">1,50 € <small>/ hora</small></div>
+              <ul>
+                <li>Ideal para trayectos y paseos cortos</li>
+                <li>Casco y luz incluidos</li>
+                <li>Cancelación gratuita</li>
+              </ul>
+              <button type="button" class="btn btn-ghost btn-block js-open-reserve">
+                Reservar
+              </button>
+            </article>
+            <article class="price-card featured reveal">
+              <span class="price-flag">Más popular</span>
+              <h3>Por días</h3>
+              <div class="price-amount">12 € <small>/ día</small></div>
+              <ul>
+                <li>Uso durante toda la jornada</li>
+                <li>Asistencia en ruta</li>
+                <li>1 cambio de estación incluido</li>
+              </ul>
+              <button type="button" class="btn btn-primary btn-block js-open-reserve">
+                Reservar
+              </button>
+            </article>
+            <article class="price-card reveal">
+              <h3>Por semana</h3>
+              <div class="price-amount">45 € <small>/ semana</small></div>
+              <ul>
+                <li>Larga estancia o prueba de uso</li>
+                <li>Prioridad en la reserva de e-bikes</li>
+                <li>Mantenimiento incluido</li>
+              </ul>
+              <button type="button" class="btn btn-ghost btn-block js-open-reserve">
+                Reservar
+              </button>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== FLOTA ===== -->
+      <section class="section section-alt" id="flota">
+        <div class="container">
+          <header class="section-head">
+            <span class="eyebrow">Flota</span>
+            <h2>Bicicletas listas para salir</h2>
+            <p class="section-sub">
+              Disponibilidad, estaciones y precios cargados desde los datos de
+              la demo. Reserva directamente desde cada tarjeta.
+            </p>
+          </header>
+
+          <div class="filter-bar" role="group" aria-label="Filtrar bicicletas por tipo">
+            <button type="button" class="filter-chip active" data-type="todas">
+              Todas
+            </button>
+            <button type="button" class="filter-chip" data-type="Urbana">
+              Urbanas
+            </button>
+            <button type="button" class="filter-chip" data-type="Eléctrica">
+              Eléctricas
+            </button>
+            <button type="button" class="filter-chip" data-type="Montaña">
+              De montaña
+            </button>
+          </div>
+
+          <div class="fleet-grid" id="fleetGrid" aria-live="polite"></div>
+        </div>
+      </section>
+
+      <!-- ===== IMPACTO AMBIENTAL ===== -->
+      <section class="eco" id="impacto">
+        <div class="container">
+          <div class="eco-head">
+            <span class="eyebrow">Impacto ambiental</span>
+            <h2>Cada trayecto en bici cuenta</h2>
+            <p>
+              Elegir la bicicleta frente al coche reduce emisiones, ruido y
+              congestión. Estos indicadores se calculan con los alquileres de
+              esta demostración.
+            </p>
+          </div>
+
+          <div class="eco-grid">
+            <div class="eco-card reveal">
+              <div class="eco-icon">🌿</div>
+              <div class="eco-value"><span id="ecoCo2">0</span> kg</div>
+              <div class="eco-label">CO₂ potencialmente evitado</div>
+            </div>
+            <div class="eco-card reveal">
+              <div class="eco-icon">🛣️</div>
+              <div class="eco-value"><span id="ecoKm">0</span> km</div>
+              <div class="eco-label">Equivalentes en coche</div>
+            </div>
+            <div class="eco-card reveal">
+              <div class="eco-icon">🌳</div>
+              <div class="eco-value"><span id="ecoTrees">0</span></div>
+              <div class="eco-label">Árboles/año equivalentes</div>
+            </div>
+            <div class="eco-card reveal">
+              <div class="eco-icon">⏱️</div>
+              <div class="eco-value"><span id="ecoHours">0</span> h</div>
+              <div class="eco-label">Pedaleando en la demo</div>
+            </div>
+          </div>
+
+          <ul class="eco-benefits">
+            <li>Menos emisiones y ruido en la ciudad</li>
+            <li>Más salud en los desplazamientos diarios</li>
+            <li>Espacios públicos más habitables</li>
+            <li>Hábitos de transporte responsables</li>
+          </ul>
+
+          <p class="eco-note">
+            ⚠️ Datos simulados con fines demostrativos: estimaciones calculadas
+            a partir de los alquileres de prueba y factores de referencia
+            (0,9 kg CO₂/h sustituyendo un coche). No son estadísticas
+            verificadas.
+          </p>
+        </div>
+      </section>
+
+      <!-- ===== NOSOTROS ===== -->
+      <section class="section" id="nosotros">
+        <div class="container about-grid">
+          <div>
+            <span class="eyebrow">Nosotros</span>
+            <h2>Movilidad urbana, simple y sostenible</h2>
+            <p>
+              Nexora nació para acabar con las barreras del transporte urbano:
+              una flota bien mantenida, estaciones repartidas por la ciudad y
+              una reserva que funciona desde el móvil en pocos toques.
+            </p>
+            <ul class="check-list">
+              <li>Casco y seguro incluidos en cada alquiler</li>
+              <li>Mantenimiento preventivo de toda la flota</li>
+              <li>Devolución en cualquier punto de la red</li>
+              <li>Cancelación gratuita hasta 1 hora antes</li>
+            </ul>
+          </div>
+          <div class="about-cards">
+            <div class="stat-card">
+              <strong id="aboutStations">—</strong><span>Estaciones</span>
+            </div>
+            <div class="stat-card">
+              <strong id="aboutBikes">—</strong><span>Bicicletas en flota</span>
+            </div>
+            <div class="stat-card">
+              <strong>4.8</strong><span>Valoración media</span>
+            </div>
+            <div class="stat-card">
+              <strong>24/7</strong><span>Disponibilidad</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== CONTACTO ===== -->
+      <section class="section section-alt" id="contacto">
+        <div class="container form-wrap">
+          <header class="section-head">
+            <span class="eyebrow">Contacto</span>
+            <h2>¿Hablamos?</h2>
+            <p class="section-sub">
+              Cuéntanos qué necesitas y te respondemos en menos de 24 horas.
+              En la demo, los mensajes quedan guardados y se ven en el panel
+              administrativo.
+            </p>
+          </header>
+
+          <form class="contact-form" id="contactForm" novalidate>
+            <div class="form-row">
+              <div class="field">
+                <label for="name">Nombre</label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  required
+                  minlength="2"
+                  autocomplete="name"
+                  placeholder="Tu nombre"
+                />
+                <small class="error" data-for="name"></small>
+              </div>
+              <div class="field">
+                <label for="email">Correo</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  required
+                  autocomplete="email"
+                  placeholder="tu@correo.com"
+                />
+                <small class="error" data-for="email"></small>
+              </div>
+            </div>
+            <div class="field">
+              <label for="message">Mensaje</label>
+              <textarea
+                id="message"
+                name="message"
+                rows="5"
+                required
+                minlength="10"
+                placeholder="¿Qué necesitas saber?"
+              ></textarea>
+              <small class="error" data-for="message"></small>
+            </div>
+            <button type="submit" class="btn btn-primary">Enviar mensaje</button>
+            <p class="form-success" id="formSuccess" hidden>
+              ✅ ¡Mensaje enviado! Lo verás en el panel administrativo.
+            </p>
+          </form>
+        </div>
+      </section>
+
+      <!-- ===== CTA ADMIN ===== -->
+      <section class="cta-admin" id="admin">
+        <div class="container cta-inner">
+          <div>
+            <h2>Panel de administración</h2>
+            <p id="ctaDesc">
+              Gestiona la flota, las reservas, los usuarios y la configuración
+              del sitio desde un único panel.
+            </p>
+          </div>
+          <a href="admin.html" class="btn btn-light">Ir al panel →</a>
+        </div>
+      </section>
+    </main>
+
+    <!-- ===== MODAL: RESERVA ===== -->
+    <div class="modal" id="reserveModal" hidden>
+      <div class="modal-backdrop" data-close></div>
+      <div
+        class="modal-content"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="reserveTitle"
+      >
+        <button class="modal-close" data-close aria-label="Cerrar">×</button>
+
+        <div id="reserveView">
+          <h3 id="reserveTitle">Reservar una bici</h3>
+          <p class="muted">
+            Demostración funcional: la reserva se guarda en los datos locales
+            y aparece en el panel administrativo.
+          </p>
+          <form id="reserveForm" novalidate>
+            <div class="field">
+              <label for="resBike">Bicicleta</label>
+              <select id="resBike" name="bike" required></select>
+              <small class="error" data-for="bike"></small>
+            </div>
+            <div class="form-row">
+              <div class="field">
+                <label for="resName">Nombre</label>
+                <input
+                  type="text"
+                  id="resName"
+                  name="name"
+                  required
+                  minlength="2"
+                  autocomplete="name"
+                  placeholder="Tu nombre"
+                />
+                <small class="error" data-for="name"></small>
+              </div>
+              <div class="field">
+                <label for="resEmail">Correo</label>
+                <input
+                  type="email"
+                  id="resEmail"
+                  name="email"
+                  required
+                  autocomplete="email"
+                  placeholder="tu@correo.com"
+                />
+                <small class="error" data-for="email"></small>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="field">
+                <label for="resDate">Fecha de recogida</label>
+                <input type="date" id="resDate" name="date" required />
+                <small class="error" data-for="date"></small>
+              </div>
+              <div class="field">
+                <label for="resHours">Duración (horas)</label>
+                <input
+                  type="number"
+                  id="resHours"
+                  name="hours"
+                  min="1"
+                  max="72"
+                  value="2"
+                  required
+                />
+                <small class="error" data-for="hours"></small>
+              </div>
+            </div>
+            <div class="reserve-summary">
+              <span>Estación: <strong id="resStation">—</strong></span>
+              <span>Total estimado: <strong id="resTotal">—</strong></span>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">
+              Confirmar reserva
+            </button>
+          </form>
+        </div>
+
+        <div id="reserveSuccess" class="success-panel" hidden>
+          <div class="ok-icon">✓</div>
+          <h3>¡Reserva registrada!</h3>
+          <p>
+            Tu solicitud queda como <strong>pendiente</strong> y el personal del
+            panel la confirmará.
+          </p>
+          <span class="code-pill" id="reserveCode">RS-000</span>
+          <p class="muted" id="reserveDetail"></p>
+          <button type="button" class="btn btn-ghost" id="reserveAgain">
+            Reservar otra bici
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div>
+          <a href="index.html" class="logo" aria-label="Nexora">
+            <span class="logo-mark" aria-hidden="true">N</span>
+            <span class="logo-text">Nex<span>ora</span></span>
+          </a>
+          <p class="muted" id="footAbout">
+            Alquiler de bicicletas para una ciudad que respira. Demo de
+            portafolio con panel administrativo.
+          </p>
+        </div>
+        <div>
+          <h3>Navegación</h3>
+          <ul>
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#servicios">Cómo funciona</a></li>
+            <li><a href="#flota">Flota</a></li>
+            <li><a href="#impacto">Impacto</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Legal</h3>
+          <ul>
+            <li><a href="#">Aviso legal</a></li>
+            <li><a href="#">Privacidad</a></li>
+            <li><a href="#">Cookies</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Contacto</h3>
+          <ul>
+            <li id="footEmail">hola@nexora.bike</li>
+            <li id="footPhone">+34 600 000 000</li>
+            <li id="footAddr">Madrid, España</li>
+          </ul>
+        </div>
+      </div>
+      <div class="container footer-bottom">
+        <p>© <span id="year"></span> Nexora — Demo de portafolio.</p>
+        <p class="muted">
+          Datos de prueba en JSON + localStorage · Sin backend real.
+        </p>
+      </div>
+    </footer>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <script src="js/store.js" defer></script>
+    <script src="js/script.js" defer></script>
+  </body>
+</html>

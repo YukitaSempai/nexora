@@ -1,0 +1,555 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Panel de administración de la demo Nexora - alquiler de bicicletas." />
+    <meta name="robots" content="noindex" />
+    <meta name="theme-color" content="#14532d" />
+    <title>Nexora · Panel de administración</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/admin.css" />
+  </head>
+  <body class="admin-body">
+    <!-- ===== ACCESO (demo) ===== -->
+    <div class="login-wrap" id="loginView">
+      <div class="login-card">
+        <a href="index.html" class="logo" aria-label="Nexora">
+          <span class="logo-mark" aria-hidden="true">N</span>
+          <span class="logo-text">Nex<span>ora</span></span>
+        </a>
+        <h1>Acceso al panel</h1>
+        <p class="muted">
+          Gestión de flota, reservas, usuarios y contenido del sitio.
+        </p>
+
+        <form id="loginForm">
+          <div class="field">
+            <label for="loginEmail">Correo</label>
+            <input
+              type="email"
+              id="loginEmail"
+              autocomplete="username"
+              placeholder="admin@nexora.bike"
+              required
+            />
+          </div>
+          <div class="field">
+            <label for="loginPass">Contraseña</label>
+            <input
+              type="password"
+              id="loginPass"
+              autocomplete="current-password"
+              placeholder="••••••••"
+              required
+            />
+          </div>
+          <p class="login-error" id="loginError" role="alert"></p>
+          <button class="btn btn-primary btn-block" type="submit">
+            Ingresar al panel
+          </button>
+        </form>
+
+        <div class="demo-creds">
+          <strong>🔑 Credenciales de prueba</strong>
+          <p>Administrador: <code>admin@nexora.bike</code> · <code>demo1234</code></p>
+          <p>Editor: <code>editor@nexora.bike</code> · <code>demo1234</code></p>
+          <p class="muted">Cuentas ficticias solo para esta demostración.</p>
+        </div>
+
+        <a class="back-link" href="index.html">← Volver al sitio público</a>
+      </div>
+    </div>
+
+    <!-- ===== PANEL ===== -->
+    <div class="admin-shell" id="appView" hidden>
+      <aside class="admin-sidebar" id="sidebar">
+        <div class="side-brand">
+          <a href="index.html" class="logo" aria-label="Nexora">
+            <span class="logo-mark" aria-hidden="true">N</span>
+            <span class="logo-text">Nex<span>ora</span></span>
+          </a>
+          <span class="side-tag">Panel</span>
+        </div>
+
+        <nav class="side-nav" aria-label="Secciones del panel">
+          <button type="button" class="side-link active" data-view="dashboard">
+            <span class="side-ico">📊</span> Resumen
+          </button>
+          <button type="button" class="side-link" data-view="bikes">
+            <span class="side-ico">🚲</span> Bicicletas
+          </button>
+          <button type="button" class="side-link" data-view="reservations">
+            <span class="side-ico">📅</span> Reservas
+          </button>
+          <button type="button" class="side-link" data-view="users">
+            <span class="side-ico">👥</span> Usuarios
+          </button>
+          <button type="button" class="side-link" data-view="messages">
+            <span class="side-ico">✉️</span> Mensajes
+            <span class="side-badge" id="msgBadge" hidden>0</span>
+          </button>
+          <button type="button" class="side-link" data-view="settings">
+            <span class="side-ico">⚙️</span> Configuración
+          </button>
+        </nav>
+
+        <div class="side-foot">
+          <a class="side-link" href="index.html">
+            <span class="side-ico">🌐</span> Ver sitio público
+          </a>
+          <button type="button" class="side-link" id="logoutBtn">
+            <span class="side-ico">🚪</span> Cerrar sesión
+          </button>
+        </div>
+      </aside>
+
+      <div class="admin-main">
+        <header class="admin-topbar">
+          <button type="button" class="side-toggle" id="sideToggle" aria-label="Abrir menú del panel">
+            ☰
+          </button>
+          <h1 id="viewTitle">Resumen</h1>
+          <div class="user-chip">
+            <span class="avatar" id="userInitials">AD</span>
+            <span class="user-meta">
+              <strong id="userName">—</strong>
+              <small id="userRole">—</small>
+            </span>
+          </div>
+        </header>
+
+        <div class="admin-content">
+          <!-- RESUMEN -->
+          <section class="admin-view" id="view-dashboard">
+            <div class="stat-grid" id="dashStats"></div>
+
+            <div class="panel-grid">
+              <div class="panel">
+                <div class="panel-head">
+                  <h2>Reservas recientes</h2>
+                  <button type="button" class="link-btn" data-jump="reservations">
+                    Ver todas →
+                  </button>
+                </div>
+                <div class="table-wrap">
+                  <table class="data-table">
+                    <thead>
+                      <tr>
+                        <th>ID</th>
+                        <th>Cliente</th>
+                        <th>Bicicleta</th>
+                        <th>Fecha</th>
+                        <th>Estado</th>
+                      </tr>
+                    </thead>
+                    <tbody id="recentResBody"></tbody>
+                  </table>
+                </div>
+              </div>
+
+              <div class="panel">
+                <div class="panel-head">
+                  <h2>Impacto ambiental</h2>
+                  <button type="button" class="link-btn" data-jump="reservations">
+                    Gestionar reservas →
+                  </button>
+                </div>
+                <div class="mini-eco" id="dashEco"></div>
+                <p class="panel-note">
+                  Estimaciones ilustrativas calculadas con los alquileres de
+                  esta demostración. No son estadísticas verificadas.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- BICICLETAS -->
+          <section class="admin-view" id="view-bikes" hidden>
+            <div class="toolbar">
+              <input
+                type="search"
+                id="bikeSearch"
+                placeholder="Buscar por nombre, ID o estación…"
+                aria-label="Buscar bicicletas"
+              />
+              <select id="bikeFilter" aria-label="Filtrar por estado">
+                <option value="todos">Todos los estados</option>
+                <option value="disponible">Disponibles</option>
+                <option value="alquilada">Alquiladas</option>
+                <option value="mantenimiento">En mantenimiento</option>
+              </select>
+              <select id="bikeTypeFilter" aria-label="Filtrar por tipo">
+                <option value="todos">Todos los tipos</option>
+                <option value="Urbana">Urbanas</option>
+                <option value="Eléctrica">Eléctricas</option>
+                <option value="Montaña">De montaña</option>
+              </select>
+              <button type="button" class="btn btn-primary" id="bikeNewBtn">
+                + Nueva bicicleta
+              </button>
+            </div>
+
+            <div class="form-panel" id="bikeFormPanel" hidden>
+              <h2 id="bikeFormTitle">Nueva bicicleta</h2>
+              <form id="bikeForm" class="entity-form">
+                <input type="hidden" id="bId" />
+                <div class="field">
+                  <label for="bName">Nombre *</label>
+                  <input type="text" id="bName" required maxlength="60" />
+                </div>
+                <div class="field">
+                  <label for="bType">Tipo *</label>
+                  <select id="bType" required>
+                    <option value="Urbana">Urbana</option>
+                    <option value="Eléctrica">Eléctrica</option>
+                    <option value="Montaña">Montaña</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label for="bStatus">Estado *</label>
+                  <select id="bStatus" required>
+                    <option value="disponible">Disponible</option>
+                    <option value="alquilada">Alquilada</option>
+                    <option value="mantenimiento">Mantenimiento</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label for="bStation">Estación *</label>
+                  <input type="text" id="bStation" required maxlength="60" placeholder="Estación Centro" />
+                </div>
+                <div class="field">
+                  <label for="bPriceHour">Precio por hora (€) *</label>
+                  <input type="number" id="bPriceHour" min="0.1" step="0.1" required />
+                </div>
+                <div class="field">
+                  <label for="bPriceDay">Precio por día (€) *</label>
+                  <input type="number" id="bPriceDay" min="1" step="0.5" required />
+                </div>
+                <div class="field">
+                  <label for="bBattery">Batería (%) — solo eléctricas</label>
+                  <input type="number" id="bBattery" min="0" max="100" step="1" placeholder="Vacío si no aplica" />
+                </div>
+                <div class="field">
+                  <label for="bYear">Año</label>
+                  <input type="number" id="bYear" min="2015" max="2035" step="1" />
+                </div>
+                <div class="field">
+                  <label for="bColor">Color de la tarjeta</label>
+                  <input type="color" id="bColor" value="#16a34a" />
+                </div>
+                <div class="field span-2">
+                  <label for="bDesc">Descripción *</label>
+                  <textarea id="bDesc" rows="2" required maxlength="220"></textarea>
+                </div>
+                <div class="form-actions span-2">
+                  <button type="submit" class="btn btn-primary">Guardar bicicleta</button>
+                  <button type="button" class="btn btn-ghost" id="bikeCancel">Cancelar</button>
+                </div>
+              </form>
+            </div>
+
+            <div class="panel">
+              <div class="panel-head">
+                <h2>
+                  Bicicletas
+                  <span class="count-pill" id="bikeCount">0</span>
+                </h2>
+              </div>
+              <div class="table-wrap">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Bicicleta</th>
+                      <th>Tipo</th>
+                      <th>Estación</th>
+                      <th>Tarifa</th>
+                      <th>Batería</th>
+                      <th>Estado</th>
+                      <th>Acciones</th>
+                    </tr>
+                  </thead>
+                  <tbody id="bikeTableBody"></tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+
+          <!-- RESERVAS -->
+          <section class="admin-view" id="view-reservations" hidden>
+            <div class="toolbar">
+              <input
+                type="search"
+                id="resSearch"
+                placeholder="Buscar por cliente, correo o ID…"
+                aria-label="Buscar reservas"
+              />
+              <select id="resFilter" aria-label="Filtrar por estado">
+                <option value="todos">Todos los estados</option>
+                <option value="pendiente">Pendientes</option>
+                <option value="confirmada">Confirmadas</option>
+                <option value="activa">Activas (en curso)</option>
+                <option value="finalizada">Finalizadas</option>
+                <option value="cancelada">Canceladas</option>
+              </select>
+              <button type="button" class="btn btn-primary" id="resNewBtn">
+                + Nueva reserva
+              </button>
+            </div>
+
+            <div class="form-panel" id="resFormPanel" hidden>
+              <h2 id="resFormTitle">Nueva reserva</h2>
+              <form id="resForm" class="entity-form">
+                <input type="hidden" id="rId" />
+                <div class="field">
+                  <label for="rBike">Bicicleta *</label>
+                  <select id="rBike" required></select>
+                </div>
+                <div class="field">
+                  <label for="rStatus">Estado *</label>
+                  <select id="rStatus" required>
+                    <option value="pendiente">Pendiente</option>
+                    <option value="confirmada">Confirmada</option>
+                    <option value="activa">Activa (en curso)</option>
+                    <option value="finalizada">Finalizada</option>
+                    <option value="cancelada">Cancelada</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label for="rCustomer">Cliente *</label>
+                  <input type="text" id="rCustomer" required maxlength="60" />
+                </div>
+                <div class="field">
+                  <label for="rEmail">Correo *</label>
+                  <input type="email" id="rEmail" required maxlength="80" />
+                </div>
+                <div class="field">
+                  <label for="rDate">Fecha *</label>
+                  <input type="date" id="rDate" required />
+                </div>
+                <div class="field">
+                  <label for="rHours">Horas *</label>
+                  <input type="number" id="rHours" min="1" max="72" step="1" value="2" required />
+                </div>
+                <div class="form-actions span-2">
+                  <button type="submit" class="btn btn-primary">Guardar reserva</button>
+                  <button type="button" class="btn btn-ghost" id="resCancel">Cancelar</button>
+                </div>
+              </form>
+            </div>
+
+            <div class="panel">
+              <div class="panel-head">
+                <h2>
+                  Reservas y alquileres
+                  <span class="count-pill" id="resCount">0</span>
+                </h2>
+                <span class="panel-note"
+                  >Iniciar marca la bici como alquilada; finalizar o cancelar la
+                  libera.</span
+                >
+              </div>
+              <div class="table-wrap">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Cliente</th>
+                      <th>Bicicleta</th>
+                      <th>Fecha</th>
+                      <th>Horas</th>
+                      <th>Total</th>
+                      <th>Estado</th>
+                      <th>Acciones</th>
+                    </tr>
+                  </thead>
+                  <tbody id="resTableBody"></tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+
+          <!-- USUARIOS -->
+          <section class="admin-view" id="view-users" hidden>
+            <div class="toolbar">
+              <input
+                type="search"
+                id="userSearch"
+                placeholder="Buscar por nombre, correo o ID…"
+                aria-label="Buscar usuarios"
+              />
+              <select id="userRoleFilter" aria-label="Filtrar por rol">
+                <option value="todos">Todos los roles</option>
+                <option value="admin">Administradores</option>
+                <option value="editor">Editores</option>
+                <option value="cliente">Clientes</option>
+              </select>
+              <button type="button" class="btn btn-primary" id="userNewBtn">
+                + Nuevo usuario
+              </button>
+            </div>
+
+            <div class="form-panel" id="userFormPanel" hidden>
+              <h2 id="userFormTitle">Nuevo usuario</h2>
+              <form id="userForm" class="entity-form">
+                <input type="hidden" id="uId" />
+                <div class="field">
+                  <label for="uName">Nombre *</label>
+                  <input type="text" id="uName" required maxlength="60" />
+                </div>
+                <div class="field">
+                  <label for="uEmail">Correo *</label>
+                  <input type="email" id="uEmail" required maxlength="80" />
+                </div>
+                <div class="field">
+                  <label for="uPhone">Teléfono</label>
+                  <input type="tel" id="uPhone" maxlength="25" placeholder="+34 600 000 000" />
+                </div>
+                <div class="field">
+                  <label for="uRole">Rol *</label>
+                  <select id="uRole" required>
+                    <option value="cliente">Cliente</option>
+                    <option value="editor">Editor</option>
+                    <option value="admin">Administrador</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label for="uStatus">Estado *</label>
+                  <select id="uStatus" required>
+                    <option value="activo">Activo</option>
+                    <option value="inactivo">Inactivo</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label for="uPassword">Contraseña (personal del panel)</label>
+                  <input
+                    type="password"
+                    id="uPassword"
+                    autocomplete="new-password"
+                    placeholder="Déjala vacía para clientes"
+                  />
+                </div>
+                <div class="form-actions span-2">
+                  <button type="submit" class="btn btn-primary">Guardar usuario</button>
+                  <button type="button" class="btn btn-ghost" id="userCancel">Cancelar</button>
+                </div>
+              </form>
+            </div>
+
+            <div class="panel">
+              <div class="panel-head">
+                <h2>
+                  Usuarios
+                  <span class="count-pill" id="userCount">0</span>
+                </h2>
+              </div>
+              <div class="table-wrap">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Nombre</th>
+                      <th>Correo</th>
+                      <th>Teléfono</th>
+                      <th>Rol</th>
+                      <th>Estado</th>
+                      <th>Alquileres</th>
+                      <th>Acciones</th>
+                    </tr>
+                  </thead>
+                  <tbody id="userTableBody"></tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+
+          <!-- MENSAJES -->
+          <section class="admin-view" id="view-messages" hidden>
+            <div class="panel">
+              <div class="panel-head">
+                <h2>
+                  Mensajes de contacto
+                  <span class="count-pill" id="msgCount">0</span>
+                </h2>
+                <span class="panel-note"
+                  >Enviados desde el formulario del sitio público.</span
+                >
+              </div>
+              <div class="msg-list" id="msgList"></div>
+            </div>
+          </section>
+
+          <!-- CONFIGURACIÓN -->
+          <section class="admin-view" id="view-settings" hidden>
+            <div class="panel">
+              <div class="panel-head">
+                <h2>Configuración del sitio</h2>
+              </div>
+              <p class="panel-note">
+                Estos datos se muestran en el sitio público (título, pie de
+                página y datos de contacto).
+              </p>
+              <form id="settingsForm" class="entity-form">
+                <div class="field">
+                  <label for="sSiteName">Nombre del sitio *</label>
+                  <input type="text" id="sSiteName" required maxlength="40" />
+                </div>
+                <div class="field">
+                  <label for="sTagline">Eslogan *</label>
+                  <input type="text" id="sTagline" required maxlength="90" />
+                </div>
+                <div class="field">
+                  <label for="sEmail">Correo de contacto *</label>
+                  <input type="email" id="sEmail" required maxlength="80" />
+                </div>
+                <div class="field">
+                  <label for="sPhone">Teléfono</label>
+                  <input type="tel" id="sPhone" maxlength="25" />
+                </div>
+                <div class="field">
+                  <label for="sAddress">Dirección</label>
+                  <input type="text" id="sAddress" maxlength="80" />
+                </div>
+                <div class="field">
+                  <label for="sCo2">CO₂ evitado por hora (kg, estimado)</label>
+                  <input type="number" id="sCo2" min="0.1" max="5" step="0.1" />
+                </div>
+                <div class="form-actions span-2">
+                  <button type="submit" class="btn btn-primary">
+                    Guardar configuración
+                  </button>
+                </div>
+              </form>
+            </div>
+
+            <div class="panel danger-zone">
+              <div class="panel-head">
+                <h2>Datos de demostración</h2>
+              </div>
+              <p class="panel-note">
+                Los cambios se guardan en <code>localStorage</code>. Puedes
+                restaurar los datos originales de <code>data/*.json</code> en
+                cualquier momento (cerrará la sesión).
+              </p>
+              <button type="button" class="btn btn-danger" id="resetBtn">
+                Restaurar datos de ejemplo
+              </button>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <script src="js/store.js" defer></script>
+    <script src="js/admin.js" defer></script>
+  </body>
+</html>

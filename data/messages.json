@@ -1,0 +1,18 @@
+[
+  {
+    "id": "MS-001",
+    "name": "Elena Ramos",
+    "email": "elena@ejemplo.com",
+    "text": "¿Ofrecéis alquileres semanales para empresas?",
+    "date": "2026-10-17T09:00:00",
+    "read": true
+  },
+  {
+    "id": "MS-002",
+    "name": "Jorge Díaz",
+    "email": "jorge@ejemplo.com",
+    "text": "Me gustaría saber si hay descuento por alquiler mensual.",
+    "date": "2026-10-18T17:30:00",
+    "read": false
+  }
+]
